@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication1", "WebApplication1\WebApplication1.csproj", "{B7C2727B-C7A0-4C4B-BD13-3149879BE8EF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordCount", "WordCount\WordCount.csproj", "{DD6A3734-6B89-486F-BF32-250CC303ADAA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B7C2727B-C7A0-4C4B-BD13-3149879BE8EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7C2727B-C7A0-4C4B-BD13-3149879BE8EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7C2727B-C7A0-4C4B-BD13-3149879BE8EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7C2727B-C7A0-4C4B-BD13-3149879BE8EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD6A3734-6B89-486F-BF32-250CC303ADAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD6A3734-6B89-486F-BF32-250CC303ADAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD6A3734-6B89-486F-BF32-250CC303ADAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD6A3734-6B89-486F-BF32-250CC303ADAA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

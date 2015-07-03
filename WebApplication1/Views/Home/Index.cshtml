@@ -1,0 +1,79 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<script src="~/Scripts/DiPSClientJS.js"></script>
+
+<div class="jumbotron">
+    <h1 style="font-size:4em;">Distributed Systems with DiPS <img src="~/DiPSLogo.png" style="margin-left:30px;margin-bottom:50px;" /></h1>
+    <h2>(<b>Di</b>stributed <b>P</b>ublish <b>S</b>ubscribe)</h2>
+    <p style="font-size:0.99em">In software architecture, publish–subscribe is a messaging pattern where senders of messages, called publishers, do not program the messages to be sent directly to specific receivers, called subscribers. Instead, published messages are characterized into classes, without knowledge of what, if any, subscribers there may be. Similarly, subscribers express interest in one or more classes, and only receive messages that are of interest, without knowledge of what, if any, publishers there are.</small>
+    <p><a href="https://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern" class="btn btn-primary btn-lg">Learn more...</a></p>
+</div>
+
+<div class="row" >
+    <div class="col-md-3">
+        <b style="font-size:1.5em">Enter a word to search</b>
+    </div>
+    <div class="col-md-3">
+        <input type="text" class="form-control" id="term"/>        
+    </div>
+    <div class="col-md-1">
+        <button class="btn btn-info"><span class="glyphicon glyphicon-search" aria-hidden="true" onclick="searchWord()" title="search"></span></button>
+    </div>
+    <div class="col-md-1">
+        <button class="btn btn-danger"><span class="glyphicon glyphicon-repeat" aria-hidden="true" onclick="clearResults()" title="clear"></span></button>
+    </div>
+</div>
+<div class="row" id="searchResults">
+    
+    
+</div>
+
+<script>
+    
+    diPSClient.Connect('ws://192.168.56.101:8888/dips');
+
+    diPSClient.Subscribe("searchresults", function (msg) {
+        var word = '';
+        if (msg[0] != undefined)
+            word = msg[0].Word;
+        else {
+            $('#st' + word).append('<h3>' + word + ': ' + msg.length + ' times found</h4>');
+            return;
+        }       
+        
+        //update # of lines found
+        if ($('#' + word + 'timesfound').length == 0) {
+            $('#st' + word).append('<h3 id="' + word + 'timesfound">' + word + ': ' + msg.length + ' times found</h4>');
+        } else {
+            var found = $('#' + word + 'timesfound').html();
+            found = found.replace(word + ': ', '');
+            found = found.replace(' times found', '');
+            found =  parseInt(found) + msg.length;
+            $('#' + word + 'timesfound').html(word + ': ' + found + ' times found');
+        }
+        //update the ui
+        for (var x in msg) {
+            $('#st' + word).append('<p><b>' + msg[x].BookName + '(' + msg[x].LineNumber + '):</b> ' + msg[x].Line.replace(word, '<b>' + word + '</b>') + '</p>');
+        }
+    });
+
+    function clearResults() {
+        $('#term').val('');
+        $('#searchResults').html('');
+    }
+
+    function searchWord() {
+        //display results grouped by word
+        if ($('#st' + $('#term').val()).length == 0)
+            $('#searchResults').append('<div class="col-md-12" id="st' + $('#term').val() + '"></div>');
+
+        var search = {
+            Word: $('#term').val(),
+            SearchId: $('#term').val()
+        };
+        diPSClient.Publish("wordsearch", search);
+    }
+
+</script>
