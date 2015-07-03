@@ -9,15 +9,15 @@ client.Subscribe ("wordsearch") { |m|
 
 	word = m["Word"]
 	allfound = Array.new
-
+	texts = '/home/pedro/Projects/books/ruby/'
 	#search in all the files of certain folder
 
-	Dir.foreach('/home/pedro/Projects/books/ruby/') do |item|
+	Dir.foreach(texts) do |item|
 
 	  next if item == '.' or item == '..'
 	  i = 1
 
-	  File.open("/home/pedro/Projects/books/ruby/#{item}", "r") do |f|
+	  File.open("#{texts}#{item}", "r") do |f|
 		f.each_line do |line|
 			i += 1
 			#search the word in the file
