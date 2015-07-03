@@ -7,6 +7,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication1", "WebAppli
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordCount", "WordCount\WordCount.csproj", "{DD6A3734-6B89-486F-BF32-250CC303ADAA}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RubySamples", "RubySamples", "{F4E58768-9170-4D59-9A92-E56E47A3253E}"
+	ProjectSection(SolutionItems) = preProject
+		RubySample\EchoTest.rb = RubySample\EchoTest.rb
+		RubySample\WordCount.rb = RubySample\WordCount.rb
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
