@@ -34,14 +34,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DiPS.Client">
-      <HintPath>..\packages\DiPSClient.1.0.1\lib\DiPS.Client.dll</HintPath>
+    <Reference Include="DiPS.Client, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\DiPSClient.1.0.3\lib\DiPS.Client.dll</HintPath>
     </Reference>
-    <Reference Include="DiPS.Common">
-      <HintPath>..\packages\DiPSClient.1.0.1\lib\DiPS.Common.dll</HintPath>
+    <Reference Include="DiPS.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\DiPSClient.1.0.3\lib\DiPS.Common.dll</HintPath>
     </Reference>
-    <Reference Include="DiPSWebSockets">
-      <HintPath>..\packages\DiPSClient.1.0.1\lib\DiPSWebSockets.dll</HintPath>
+    <Reference Include="DiPSWebSockets, Version=1.0.0.17203, Culture=neutral, PublicKeyToken=5660b08a1845a91e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\DiPSClient.1.0.3\lib\DiPSWebSockets.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

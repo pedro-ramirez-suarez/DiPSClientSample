@@ -1,0 +1,91 @@
+﻿@{
+    ViewBag.Title = "Chat";
+}
+<script src="~/Scripts/chat.js"></script>
+<script src="~/Scripts/DiPSClientJS.js"></script>
+
+<div class="row" ng-app="chat">
+    <div class="col-md-12" id="chatController" ng-controller="MessageCtrl">
+        <div class="row">
+            <div class="col-md-8">
+                <h2>Conversations</h2>
+                <div id="chatHistory" ng-repeat="msg in messages">
+
+                    <div class="well">
+                        <div class="row">
+                            <div  class="col-md-2">
+                                <img src="http://www.gravatar.com/avatar/{{msg.hash}}.jpg?s=40" /><br />
+                                <span class="label label-primary">{{msg.from}}</span> 
+                            </div>
+                            <div class="col-md-8">
+                                <span>{{msg.message}}</span>
+                            </div>
+                            <div class="col-md-2">
+                                <span class="msgOn label label-default" style="float:right">{{msg.date}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div id="useList">
+                    <h3>User List</h3>
+                    <div ng-repeat="usr in users">
+                        <div class="well well-sm">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <img src="http://www.gravatar.com/avatar/{{usr.Hash}}.jpg?s=60" /><br />
+                                </div>
+                                <div class="col-md-6">
+                                    <span class="label label-primary">{{usr.ClientId }}</span>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <form ng-submit="addMessage()">
+                <div class="row">
+                    <div class="col-md-3">
+                        <input type="text" ng-model="messagesText" size="30" class="form-control"
+                               placeholder="send message">
+                    </div>
+                    <div class="col-md-2">
+                        <input class="btn btn-primary" type="submit" value="Send">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+<script language="javascript" type="text/javascript" defer>
+
+    myId = '@ViewBag.UserName';
+
+    chatUrl = '@Url.Action("Index", "Chat", new { })';
+    //on document load get the user list
+    document.addEventListener('DOMContentLoaded', function () {
+        diPSClient.Connect('ws://localhost:8888/dips');
+        //subscribe to the reloaduserlist and newmessage events
+        diPSClient.Subscribe("reloaduserlist", function (data) {
+            updateUserList(data);
+        });
+        diPSClient.Subscribe("newmessage", function (message) {
+            messageReceived(message.From, message.MessageText, true);
+        });
+        getUsers();
+    }, false);
+
+    
+
+
+</script>
