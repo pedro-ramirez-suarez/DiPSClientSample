@@ -6,7 +6,7 @@
 To run this samples you need to have a DiPS service running in your network, some of the samples asume that you have a DiPS service runnin on:
 192.168.56.101 on port 8888 others asume that you are running the service on localhost, in the same 8888 port, modify those depending on your environment.
 
-There are 3 code samples on C# and two on ruby, you will need the dipsclient ruby gem to run the samples, to install the gem just type:
+There are 5 code samples on C# and two on ruby, you will need the dipsclient ruby gem to run the samples, to install the gem just type:
 <pre>gem install dipsclient</pre>
 
 C# Samples:
@@ -15,6 +15,9 @@ C# Samples:
 - A word count, this console app, receives a word, and search how many times the word is found in all .txt files in some folder.
 
 - A Chat application, a simple chat application that uses gravatar to display avantars.
+
+- A TODO app in two parts, a web site with only html, css and javascript and a console app that acts as the server code for the web site. 
+
 
 
 Ruby Samples:
