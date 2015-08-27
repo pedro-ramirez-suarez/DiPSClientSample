@@ -1,0 +1,70 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Login</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/Content/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <script type='text/javascript' src='/Scripts/jquery-2.1.4.min.js'></script>
+    <script type='text/javascript' src="/Scripts/dipsclient.js"></script>
+    
+    
+</head>
+
+<body>
+    <div class="row" style="margin-top:10px">
+        <div class="col-md-2">
+            <h1 style="margin-left:20px">TODO DiPS</h1>
+        </div>
+        <div class="col-md-8">
+            <div class="well">
+                <p>TEST</p>
+            </div>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-4"></div>
+        
+        <div class="col-md-4">
+            <form class="form-signin">
+                <h3 class="form-signin-heading">Enter your user name</h3>
+                <label for="inputEmail" class="sr-only">User Name</label>
+                <input type="text" id="inputEmail" class="form-control" placeholder="username" required autofocus>
+
+                <button class="btn btn-lg btn-primary btn-block"  type="button" style="margin-top:10px" onclick="signin()">Sign in</button>
+            </form>
+        </div>
+        <div  class="col-md-4"></div>
+    </div>
+    <div class="container">
+
+        
+
+    </div> <!-- /container -->
+    <script >
+        diPSClient.Connect('ws://localhost:8888/dips');
+        diPSClient.Subscribe("loginSuccess", function (user) {
+            document.cookie = 'user=' + user.Id;
+            window.location = "todo.html";
+            
+        });
+
+        //todo login 
+        function signin() {
+            diPSClient.Publish("login", { UserName: $('#inputEmail').val() });
+        }
+
+
+    </script>
+    
+</body>
+</html>

@@ -60,7 +60,7 @@ namespace WordCount
                 {
                     string txt = sr.ReadLine();
                     /*
-					 * for some reason Mono does not like to evaluate dynamic objects when calling methods
+					 * for some reason Mono does not like to evaluate dynamic objects on lambda expressions
 					 * so we need to use a variable and use it in the .Contains method
 					 */
                     string w = s.Word; 
