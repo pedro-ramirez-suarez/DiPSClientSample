@@ -20,7 +20,25 @@
 </head>
 
 <body>
-    <div class="row" style="margin-top:10px">
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="login.html" class="navbar-brand">Login</a>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+    <!--<div class="row" style="margin-top:10px">
         <div class="col-md-2">
             <h1 style="margin-left:20px">TODO DiPS</h1>
         </div>
@@ -44,10 +62,31 @@
             </form>
         </div>
         <div  class="col-md-4"></div>
-    </div>
-    <div class="container">
+    </div>-->
+    <div class="container body-content">
 
-        
+        <div class="jumbotron">
+            <h1 style="font-size:4em;">Simple ToDo list</h1>
+            <h2>With DiPS (<b>Di</b>stributed <b>P</b>ublish <b>S</b>ubscribe)</h2>
+            <p style="font-size:0.99em">Using DiPS to provide a backend for a web site build only with html, css and javascript, the backend is a console application, both, the UI and the console app send messages to each other through DiPS server.</p>
+            <p><a href="https://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern" class="">Learn more about publish subscribe...</a></p>
+        </div>
+
+        <form method="post" onsubmit="return signin()">
+            <div class="row">
+                <div class="col-md-3">
+
+                    <input type="text" id="inputEmail" name="inputEmail" placeholder="Enter your username here" tabindex="0" autofocus required style="width:250px" class="form-control" />
+                </div>
+                <div class="col-md-3">
+                    <button type="submit" class="btn btn-success" >login</button>
+                </div>
+            </div>
+
+
+
+        </form>
+
 
     </div> <!-- /container -->
     <script >
@@ -61,6 +100,7 @@
         //todo login 
         function signin() {
             diPSClient.Publish("login", { UserName: $('#inputEmail').val() });
+            return false;
         }
 
 
