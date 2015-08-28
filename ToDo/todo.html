@@ -63,7 +63,7 @@
 
                     <footer style="display: block;">
                         <div data-bind="visible:todos().length>0">
-                            <div class="todo-count"><b data-bind="text:todos().length"></b> items left</div>
+                            <div class="todo-count"><label class="label label-info" data-bind="html:countDoneText(false)"></label> </div>
                             <!-- ko if: doneTodos() > 0 -->
                             <a id="clear-completed" data-bind="click:clear" class="btn btn-small btn-danger">
                                 Delete <span data-bind="html:countDoneText(true)"></span>.

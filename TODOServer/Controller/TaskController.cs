@@ -43,7 +43,7 @@ namespace TODOServer.Controller
         }
 
 
-        public void GetTasks(Guid userId)
+        public  void  GetTasks(Guid userId)
         {
             var tasks = repo.GetMany(where: new { OwnerId = userId }, orderBy : new { ViewOrder = "Desc" });
             //return task list
