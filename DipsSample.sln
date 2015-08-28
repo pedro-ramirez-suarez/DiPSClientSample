@@ -15,7 +15,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RubySamples", "RubySamples"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiPSChatSample", "DiPSServerSample\DiPSChatSample.csproj", "{0B282DED-9CB9-42F8-B609-F4902342D0CB}"
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "ToDo(1)", "http://localhost:45064", "{CD7E006C-CD8B-4C42-93A5-EE0F2023D6F0}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "ToDo", "http://localhost:45064", "{CD7E006C-CD8B-4C42-93A5-EE0F2023D6F0}"
 	ProjectSection(WebsiteProperties) = preProject
 		UseIISExpress = "true"
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"

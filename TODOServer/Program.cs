@@ -5,6 +5,7 @@ using System.Configuration;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using TODOServer.Controller;
 
@@ -15,6 +16,7 @@ namespace TODOServer
         static void Main(string[] args)
         {
             var dipsRunning = false;
+            var dipsLaunched = false;
             while (true)
             {
                 
@@ -24,11 +26,22 @@ namespace TODOServer
                         if (theprocess.ProcessName.ToLower().Trim().Contains("dips"))
                         {
                             dipsRunning = true;
+                            Console.Clear();
                             break;
                         }
                     }
                     if (dipsRunning)
                         break;
+                    else if(!dipsLaunched)
+                    {
+                        //attempt to start DiPS
+                        Process.Start(ConfigurationManager.AppSettings["dipsserverpath"] + "\\DiPS.exe");
+                        //sleeps a few milisecs
+                        Thread.Sleep(1000);
+                        dipsLaunched = true;
+                        continue;
+                    }
+
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Seems like the DiPS server is not running, please make sure that the server is running.");
                     Console.ForegroundColor = ConsoleColor.Green;
