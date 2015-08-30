@@ -3,13 +3,13 @@ require  'dipsclient'
 
 client = DiPS::DiPSClient.new "ws://192.168.56.101:8888/dips"
 puts "Connecting"
+#Wait a little to get the connection ready
 sleep 2.0
-#k = gets.chomp
 client.Subscribe ("wordsearch") { |m| 
 
 	word = m["Word"]
 	allfound = Array.new
-	texts = '/home/pedro/Projects/books/ruby/'
+	texts = 'C:\books\Ruby\'
 	#search in all the files of certain folder
 
 	Dir.foreach(texts) do |item|
@@ -35,9 +35,6 @@ client.Subscribe ("wordsearch") { |m|
 	#publish the result
 	client.Publish "searchresults", allfound
 }
-#param = {"name"=>"pedro", "age" =>39}
-#puts "Publishing"
-#client.Publish "test", param
 puts "Enter to exit"
 k = gets.chomp
 

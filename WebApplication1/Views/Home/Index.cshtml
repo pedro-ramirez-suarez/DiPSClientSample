@@ -1,6 +1,4 @@
-﻿@{
-    ViewBag.Title = "Home Page";
-}
+﻿
 
 <script src="~/Scripts/DiPSClientJS.min.js"></script>
 
@@ -65,6 +63,8 @@
     }
 
     function searchWord() {
+        //clear results first
+        clearResults();
         //display results grouped by word
         if ($('#st' + $('#term').val()).length == 0)
             $('#searchResults').append('<div class="col-md-12" id="st' + $('#term').val() + '"></div>');
