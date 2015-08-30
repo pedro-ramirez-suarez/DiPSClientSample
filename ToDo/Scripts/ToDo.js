@@ -1,4 +1,4 @@
-﻿var ownerId = '';
+var ownerId = '';
 var updating = false;
 
 
@@ -20,9 +20,6 @@ $(window).load(function () {
         ownerId = document.cookie.toString();
         ownerId = ownerId.replace('user=','');
         diPSClient.Connect('ws://localhost:8888/dips');
-
-        //var ownerId = document.cookie.toString();
-        //ownerId = ownerId.replace('user=', '');
         var viewModel = function () {
             var self = this;
             self.todos = ko.observableArray([]);
@@ -71,7 +68,7 @@ $(window).load(function () {
                     return it.done();
                 });
                 self.doneTodos(doneArray.length);
-                //update the item on the server
+                //update the item on the server only if it has changes
                 if (!updating && (item.title() != item.origTitle || item.done() != item.origDone )) {
                     var tsk = { Id: item.id, OwnerId: ownerId, Description: item.title(), Completed: item.done() };
                     diPSClient.Publish('UpdateTask', tsk);
@@ -94,15 +91,14 @@ $(window).load(function () {
                         diPSClient.Publish('DeleteTask', {Id : item.id });
                     }
                 });
-                //update the list
+                //reload the list
                 diPSClient.Publish('GetTasks', { UserId: ownerId });
-                //self.todos.remove(function (item) { return item.done(); });
             }
         };
 
         var todosVM = new viewModel();
         
-        //reload all the list
+        //Receives the task list from the server
         diPSClient.Subscribe("TaskListFromServer", function (data) {
             //flag
             updating = true;
@@ -112,15 +108,15 @@ $(window).load(function () {
                 var t = new Todo(data[xi].Description, data[xi].Completed, data[xi].ViewOrder, todosVM.countUpdate, data[xi].Id);
                 todosVM.todos.push(t);               
             }
+            //This is needed because knockout may fire the change events a little bit slow
             setTimeout(function () { updating = false; }, 250);
         });
         
 
         ko.applyBindings(todosVM);
-
+        //Get the list
         diPSClient.Publish('GetTasks', { UserId: ownerId });
-        //diPSClient.Publish("login", { UserName: 'pedro' });
-
+        
     })
 
 });
