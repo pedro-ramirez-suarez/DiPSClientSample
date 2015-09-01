@@ -55,24 +55,9 @@ angular.module("chat", [])
     $scope.addMessage = function () {
         var selected = '';
         sendMessage(selected, $scope.messagesText);
-        //messageReceived('Me', $scope.messagesText, false);
         $scope.messagesText = '';
     };
 
 
 });
 
-//function MessageCtrl($scope) {
-//    $scope.messages = [];
-//    $scope.users = [];
-//    $scope.sendToAll = true;
-//    $scope.addMessage = function () {
-//        var selected = $scope.selectedUser != undefined ? $scope.selectedUser[0] : '';
-//        if (selected == null || selected == undefined || $scope.sendToAll)
-//            selected = '';
-//        sendMessage(selected, $scope.messagesText);
-//        //messageReceived('Me', $scope.messagesText, false);
-//        $scope.messagesText = '';
-//    };
-
-//}
