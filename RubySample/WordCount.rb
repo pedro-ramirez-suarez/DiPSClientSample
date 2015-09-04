@@ -1,7 +1,7 @@
 require  'dipsclient'
 
 
-client = DiPS::DiPSClient.new "ws://192.168.56.101:8888/dips"
+client = DiPS::DiPSClient.new "ws://localhost:8888/dips"
 puts "Connecting"
 #Wait a little to get the connection ready
 sleep 2.0
@@ -9,7 +9,7 @@ client.Subscribe ("wordsearch") { |m|
 
 	word = m["Word"]
 	allfound = Array.new
-	texts = 'C:\books\Ruby\'
+	texts = 'C:\\books\Ruby\\'
 	#search in all the files of certain folder
 
 	Dir.foreach(texts) do |item|

@@ -30,7 +30,7 @@
 
 <script>
     
-    diPSClient.Connect('ws://192.168.56.101:8888/dips');
+    diPSClient.Connect('ws://localhost:8888/dips');
 
     diPSClient.Subscribe("searchresults", function (msg) {
         var word = '';
