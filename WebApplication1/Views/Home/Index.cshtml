@@ -3,7 +3,7 @@
 <script src="~/Scripts/DiPSClientJS.min.js"></script>
 
 <div class="jumbotron">
-    <h1 style="font-size:4em;">Chat app with DiPS <img src="~/DiPSLogo.png" style="margin-left:30px;margin-bottom:50px;" /></h1>
+    <h1 style="font-size:4em;">Search engine with DiPS <img src="~/DiPSLogo.png" style="margin-left:30px;margin-bottom:50px;" /></h1>
     <h2>(<b>Di</b>stributed <b>P</b>ublish <b>S</b>ubscribe)</h2>
     <p style="font-size:0.99em">In software architecture, publish–subscribe is a messaging pattern where senders of messages, called publishers, do not program the messages to be sent directly to specific receivers, called subscribers. Instead, published messages are characterized into classes, without knowledge of what, if any, subscribers there may be. Similarly, subscribers express interest in one or more classes, and only receive messages that are of interest, without knowledge of what, if any, publishers there are.</small>
     <p><a href="https://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern" class="btn btn-primary btn-lg">Learn more...</a></p>
@@ -64,7 +64,7 @@
 
     function searchWord() {
         //clear results first
-        clearResults();
+        $('#searchResults').html('');
         //display results grouped by word
         if ($('#st' + $('#term').val()).length == 0)
             $('#searchResults').append('<div class="col-md-12" id="st' + $('#term').val() + '"></div>');
