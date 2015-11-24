@@ -53,8 +53,9 @@ namespace TODOServer
             DiPSClient client = new DiPSClient(ConfigurationManager.AppSettings["dipsserver"]);
             
 
-            TaskController tasks = new TaskController(client);
-            UserController users = new UserController(client);
+            //TaskController tasks = new TaskController(client);
+            //UserController users = new UserController(client);
+            TestController controller = new TestController(client);
             
             while (true)
             {

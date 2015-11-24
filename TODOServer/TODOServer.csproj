@@ -73,7 +73,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\DiPSController.cs" />
     <Compile Include="Controller\TaskController.cs" />
+    <Compile Include="Controller\TestController.cs" />
     <Compile Include="Controller\UserController.cs" />
     <Compile Include="Model\Task.cs" />
     <Compile Include="Model\User.cs" />
