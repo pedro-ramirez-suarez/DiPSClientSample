@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace TODOServer.Controller
 {
-    public class TestController : DiPSController
+    public class Test : DiPSController
     {
-        public TestController(DiPSClient client) : base(client) 
+        public Test(DiPSClient client) : base(client) 
         {
         }
 
@@ -29,5 +29,7 @@ namespace TODOServer.Controller
             Console.ForegroundColor = ConsoleColor.White;
             DiPSClient.Publish("EchoReturn", val);
         }
+
+        
     }
 }

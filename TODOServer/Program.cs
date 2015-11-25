@@ -8,54 +8,26 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using TODOServer.Controller;
+using TODOServer.Server;
 
 namespace TODOServer
 {
-    class Program
+    class Program : DiPSBackEnd
     {
+
+        static Program() 
+        {
+            //Initialize the backend, this setup the connection with DiPS and registers all the controllers with the public methods
+            InitializeBackEnd();
+        }
+
+        
         static void Main(string[] args)
         {
-            var dipsRunning = false;
-            var dipsLaunched = false;
-            while (true)
-            {
-                
-                    Process[] processlist = Process.GetProcesses();
-                    foreach (Process theprocess in processlist)
-                    {
-                        if (theprocess.ProcessName.ToLower().Trim().Contains("dips"))
-                        {
-                            dipsRunning = true;
-                            Console.Clear();
-                            break;
-                        }
-                    }
-                    if (dipsRunning)
-                        break;
-                    else if(!dipsLaunched)
-                    {
-                        //attempt to start DiPS
-                        Process.Start(ConfigurationManager.AppSettings["dipsserverpath"] + "\\DiPS.exe");
-                        //sleeps a few milisecs
-                        Thread.Sleep(1000);
-                        dipsLaunched = true;
-                        continue;
-                    }
-
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Seems like the DiPS server is not running, please make sure that the server is running.");
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("Press enter to retry, or another key to exit");
-                    if (Console.ReadKey().Key != ConsoleKey.Enter)
-                        Environment.Exit(1);
-            }
-
-            DiPSClient client = new DiPSClient(ConfigurationManager.AppSettings["dipsserver"]);
-            
-
+            //DiPSClient client = new DiPSClient(ConfigurationManager.AppSettings["dipsserver"]);
             //TaskController tasks = new TaskController(client);
             //UserController users = new UserController(client);
-            TestController controller = new TestController(client);
+            //Test controller = new Test(client);
             
             while (true)
             {

@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace TODOServer.Controller
 {
+    /// <summary>
+    /// Move this to DiPS
+    /// </summary>
     public abstract class DiPSController
     {
 
@@ -22,11 +25,24 @@ namespace TODOServer.Controller
             var methods = myType.GetMethods();
             foreach (var m in methods)
             {
-                client.Subscribe(myType.Name + "." +m.Name, (param) => 
+                //register only public methods
+                if (!m.IsPublic)
+                    continue;
+
+                client.Subscribe(myType.Name + "." + m.Name, (param) => 
                 {
-                    var pars = new List<object>();
-                    pars.Add(param);
-                    m.Invoke(this,pars.ToArray());
+                    try
+                    {
+                        var pars = new List<object>();
+                        pars.Add(param);
+                        m.Invoke(this, pars.ToArray());
+                    }
+                    catch (Exception e)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine(e);
+                        Console.ForegroundColor = ConsoleColor.White;
+                    }
                 });
             }
         }
